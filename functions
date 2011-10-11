@@ -4,8 +4,10 @@ function mk_game_dir {
     return $TMPDIR
 }
 
-function generate_game {
+function play_dominos {
     # make a temp directory => $t
+    gamedir=$(mk_game_dir)
+    
     # make empty directories $t/{1,2,pool,game}
     # create the domino set in $t/pool
     # dish out dominos to players $t/1 and $t/2
