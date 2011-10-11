@@ -1,21 +1,21 @@
 function generate_game {
-# make a temp directory => $t
-# make empty directories $t/{1,2,pool,game}
-# create the domino set in $t/pool
-# dish out dominos to players $t/1 and $t/2
-# set played = 0
-# set can_play = 2
-# set turn = 1
-# while pool_size > 2 and can_play > 0 and p1_size > 0 and p2_size > 0
-#   while player $turn can't go and pool_size > 2
-#     get a domino from the pool
-#   if pool_size == 2: goto end_game
-#
-#   find the highest matching domino and play it
-#   set can_play = 2
-#   if played == 0 then move domino to $t/game
-#   else create appropriate link in $t/game && rm $t/$turn/$domino
-# end
-# calculate dot count for each player
-# lowest score wins
+    # make a temp directory => $t
+    # make empty directories $t/{1,2,pool,game}
+    # create the domino set in $t/pool
+    # dish out dominos to players $t/1 and $t/2
+    # set played = 0
+    # set can_play = 2
+    # set turn = 1
+    # while pool_size > 2 and can_play > 0 and p1_size > 0 and p2_size > 0
+    #   while player $turn can't go and pool_size > 2
+    #     get a domino from the pool
+    #   if pool_size == 2: goto end_game
+    #
+    #   find the highest matching domino and play it
+    #   set can_play = 2
+    #   if played == 0 then move domino to $t/game
+    #   else create appropriate link in $t/game && rm $t/$turn/$domino
+    # end
+    # calculate dot count for each player
+    # lowest score wins
 }
