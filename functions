@@ -1,7 +1,7 @@
 function mk_game_dir {
     TMPDIR="$(mktemp -d -t dominos)"
     trap "rm -rf '$TMPDIR'" EXIT INT HUP TERM
-    return $TMPDIR
+    echo $TMPDIR
 }
 
 function mk_subdirs {
@@ -9,14 +9,30 @@ function mk_subdirs {
     mkdir -p $dest/{1,2,pool,game}
 }
 
+function create_tiles {
+    dest=$1
+    lpip=0
+    while [ $lpip -le 6 ]; do
+        rpip=0
+        while [ $rpip -le $lpip ]; do
+            touch $dest/pool/$lpip:$rpip
+            rpip=$((rpip + 1))
+        done
+        lpip=$((lpip + 1))
+    done
+}
+
 function play_dominos {
     # make a temp directory => $t
     gamedir=$(mk_game_dir)
+    echo "Playing dominos in $gamedir"
     
     # make empty directories $t/{1,2,pool,game}
     mk_subdirs $gamedir
     
     # create the domino set in $t/pool
+    create_tiles $gamedir
+    
     # dish out dominos to players $t/1 and $t/2
     # set played = 0
     # set can_play = 2
