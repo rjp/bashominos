@@ -11,11 +11,15 @@ function mk_subdirs {
 
 function create_tiles {
     dest=$1
+    # make a source file to avoid dependence on /dev/zero
+    echo '0123456789ABCDEF' > $dest/.zero
+    
     lpip=0
     while [ $lpip -le 6 ]; do
         rpip=0
         while [ $rpip -le $lpip ]; do
-            touch $dest/pool/$lpip:$rpip
+            # make the file [number of pips] bytes long
+            dd if=$dest/.zero of=$dest/pool/$lpip:$rpip count=$((lpip + rpip)) bs=1
             rpip=$((rpip + 1))
         done
         lpip=$((lpip + 1))
